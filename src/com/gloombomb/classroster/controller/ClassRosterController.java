@@ -10,8 +10,13 @@ import com.gloombomb.classroster.ui.UserIOConsoleImpl;
 import java.util.List;
 
 public class ClassRosterController {
-    private ClassRosterView view = new ClassRosterView();
-    private ClassRosterDao dao = new ClassRosterDaoFileImpl();
+    private ClassRosterView view;
+    private ClassRosterDao dao;
+
+    public ClassRosterController(ClassRosterDao dao, ClassRosterView view) {
+        this.dao = dao;
+        this.view = view;
+    }
 
     public void run() {
         boolean keepGoing = true;
