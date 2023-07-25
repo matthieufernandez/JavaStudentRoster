@@ -59,6 +59,15 @@ public class ClassRosterView {
         io.readString("Please hit enter to continue.");
     }
 
+    public void displayRemoveResult (Student studentRecord) {
+        if(studentRecord != null) {
+            io.print("Student successfully removed!");
+        } else {
+            io.print("No such student.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
+
 
 
     public void displayCreateStudentBanner() {
@@ -75,5 +84,17 @@ public class ClassRosterView {
 
     public void displayDisplayStudentBanner() {
         io.print("=== Display a Student ===");
+    }
+
+    public void displayRemoveStudentBanner () {
+        io.print("=== Remove Student ===");
+    }
+
+    public void displayExitBanner() {
+        io.print("Good Bye!");
+    }
+
+    public void displayUnknownCommandBanner() {
+        io.print("!!! UNKNOWN COMMAND !!!");
     }
 }

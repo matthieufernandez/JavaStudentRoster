@@ -31,6 +31,8 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
     @Override
     public Student removeStudent(String studentId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Student removedStudent = students.remove(studentId);
+        return removedStudent;
+//        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
