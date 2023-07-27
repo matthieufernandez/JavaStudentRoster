@@ -42,18 +42,15 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
     @Override
     public List<Student> getAllStudents() throws ClassRosterPersistenceException {
         return dao.getAllStudents();
-//        throw new UnsupportedOperationException("Not supported yet!");
     }
 
     @Override
     public Student getStudent(String studentId) throws ClassRosterPersistenceException {
         return dao.getStudent(studentId);
-//        throw new UnsupportedOperationException("Not supported yet!");
     }
 
     @Override
     public Student removeStudent(String studentId) throws ClassRosterPersistenceException {
         return dao.removeStudent(studentId);
-//        throw new UnsupportedOperationException("Not supported yet!");
     }
 }

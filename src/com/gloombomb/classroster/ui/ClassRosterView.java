@@ -106,4 +106,8 @@ public class ClassRosterView {
         io.print("=== ERROR ===");
         io.print(errorMsg);
     }
+
+    public void displayRemoveStudentSuccessMessage() {
+        io.print("Successfully removed student.");
+    }
 }

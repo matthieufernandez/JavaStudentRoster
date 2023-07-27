@@ -1,2 +1,3 @@
 001::Sushi::Fernandez::JAVA, June, 2024
 002::Ruby::Hugo::JAVA, January, 2023
+003::Astro::Hugo::JavaScript - January, 2024
