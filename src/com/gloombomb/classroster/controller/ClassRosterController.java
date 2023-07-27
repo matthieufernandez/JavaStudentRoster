@@ -1,7 +1,7 @@
 package com.gloombomb.classroster.controller;
 
 import com.gloombomb.classroster.dao.ClassRosterDao;
-import com.gloombomb.classroster.dao.ClassRosterDaoException;
+import com.gloombomb.classroster.dao.ClassRosterPersistenceException;
 import com.gloombomb.classroster.dto.Student;
 import com.gloombomb.classroster.ui.ClassRosterView;
 
@@ -45,7 +45,7 @@ public class ClassRosterController {
                 }
             }
             goodBye();
-        } catch (ClassRosterDaoException e) {
+        } catch (ClassRosterPersistenceException e) {
             view.displayErrorMessage(e.getMessage());
         }
     }
@@ -53,7 +53,7 @@ public class ClassRosterController {
         return view.printMenuAndGetSelection();
     }
 
-    private void createStudent() throws ClassRosterDaoException {
+    private void createStudent() throws ClassRosterPersistenceException {
         view.displayCreateStudentBanner();
         Student newStudent = view.getNewStudentInfo();
         dao.addStudent(newStudent.getStudentId(), newStudent);
@@ -61,20 +61,20 @@ public class ClassRosterController {
 
     }
 
-    private void listStudents() throws ClassRosterDaoException {
+    private void listStudents() throws ClassRosterPersistenceException {
         view.displayDisplayAllBanner();
         List<Student> studentList = dao.getAllStudents();
         view.displayStudentList(studentList);
     }
 
-    private void viewStudent() throws ClassRosterDaoException {
+    private void viewStudent() throws ClassRosterPersistenceException {
         view.displayDisplayStudentBanner();
         String studentId = view.getStudentIdChoice();
         Student student = dao.getStudent(studentId);
         view.displayStudent(student);
     }
 
-    private void removeStudent() throws ClassRosterDaoException {
+    private void removeStudent() throws ClassRosterPersistenceException {
         view.displayRemoveStudentBanner();
         String studentId = view.getStudentIdChoice();
         Student removedStudent = dao.removeStudent(studentId);
