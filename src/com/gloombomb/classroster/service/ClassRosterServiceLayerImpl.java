@@ -1,5 +1,6 @@
 package com.gloombomb.classroster.service;
 
+import com.gloombomb.classroster.dao.ClassRosterAuditDao;
 import com.gloombomb.classroster.dao.ClassRosterDao;
 import com.gloombomb.classroster.dao.ClassRosterPersistenceException;
 import com.gloombomb.classroster.dto.Student;
@@ -7,9 +8,12 @@ import com.gloombomb.classroster.dto.Student;
 import java.util.List;
 
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
+
+    private ClassRosterAuditDao auditDao;
     ClassRosterDao dao;
 
-    public ClassRosterServiceLayerImpl(ClassRosterDao dao) {
+    public ClassRosterServiceLayerImpl(ClassRosterAuditDao auditDao, ClassRosterDao dao) {
+        this.auditDao = auditDao;
         this.dao = dao;
     }
 
@@ -37,6 +41,7 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
 
         validateStudentData(student);
         dao.addStudent(student.getStudentId(), student);
+        auditDao.writeAuditEntry("Student " + student.getStudentId() + " CREATED.");
     }
 
     @Override
@@ -51,6 +56,7 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer {
 
     @Override
     public Student removeStudent(String studentId) throws ClassRosterPersistenceException {
+        auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
         return dao.removeStudent(studentId);
     }
 }

@@ -1,6 +1,8 @@
 package com.gloombomb.classroster;
 
 import com.gloombomb.classroster.controller.ClassRosterController;
+import com.gloombomb.classroster.dao.ClassRosterAuditDao;
+import com.gloombomb.classroster.dao.ClassRosterAuditDaoImpl;
 import com.gloombomb.classroster.dao.ClassRosterDao;
 import com.gloombomb.classroster.dao.ClassRosterDaoFileImpl;
 import com.gloombomb.classroster.service.ClassRosterServiceLayer;
@@ -15,7 +17,8 @@ public class App {
         UserIO myIo = new UserIOConsoleImpl();
         ClassRosterView myView = new ClassRosterView(myIo);
         ClassRosterDao myDao = new ClassRosterDaoFileImpl();
-        ClassRosterServiceLayer myService = new ClassRosterServiceLayerImpl(myDao);
+        ClassRosterAuditDao myAuditDao = new ClassRosterAuditDaoImpl();
+        ClassRosterServiceLayer myService = new ClassRosterServiceLayerImpl(myAuditDao, myDao);
         ClassRosterController controller = new ClassRosterController(myService, myView);
         controller.run();
     }
